@@ -4,3 +4,4 @@ declare module '*.vue' {
   export default component
 }
 declare module 'splitpanes'
+declare module 'monaco-editor-core/esm/vs/editor/editor.worker'

@@ -1,5 +1,13 @@
 <script setup lang="ts">
 import { Pane, Splitpanes } from 'splitpanes'
+import { orchestrator } from '~/orchestrator'
+
+const initialHtml = ref('<div>Hello world</div>')
+
+function onContentChanged(source: string, content: string) {
+  if (orchestrator.activeFile)
+    orchestrator.activeFile.content = content
+}
 </script>
 
 <template>
@@ -11,6 +19,11 @@ import { Pane, Splitpanes } from 'splitpanes'
           <Pane>
             <Container title="" class="rounded-b-md" no-overflow no-rounding>
               <template #default>
+                <Editor
+                  language="javascript"
+                  :value="initialHtml"
+                  @change="content => onContentChanged('script', content)"
+                />
                 <div class="h-full w-full bg-green-300" />
               </template>
             </Container>
