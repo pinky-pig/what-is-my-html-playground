@@ -9,3 +9,35 @@ body,
 html.dark {
   background: #121212;
 }
+
+.splitpanes.default-theme .splitpanes__pane {
+  background: transparent;
+}
+.splitpanes.default-theme .splitpanes__splitter {
+  background: transparent;
+  border-color: transparent;
+  min-width: 1rem;
+  min-height: 1rem;
+}
+
+.splitpanes.default-theme .splitpanes__splitter::before,
+.splitpanes.default-theme .splitpanes__splitter::after {
+  opacity: 0.5;
+  background-color: rgba(60, 60, 60, 1);
+}
+
+.splitpanes.default-theme .splitpanes__splitter:hover::before,
+.splitpanes.default-theme .splitpanes__splitter:hover::after {
+  background-color: rgba(252, 252, 252, 1);
+  opacity: 0.5;
+}
+
+.dark .splitpanes.default-theme .splitpanes__splitter::before,
+.dark .splitpanes.default-theme .splitpanes__splitter::after {
+  background-color: rgba(60, 60, 60, 1);
+}
+
+.dark .splitpanes.default-theme .splitpanes__splitter:hover::before,
+.dark .splitpanes.default-theme .splitpanes__splitter:hover::after {
+  background-color: rgba(60, 60, 60, 1);
+}
