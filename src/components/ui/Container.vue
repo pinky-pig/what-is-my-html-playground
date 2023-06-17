@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps<{ title: string; noOverflow?: boolean; noRounding?: boolean }>()
+defineProps<{ title?: string; noOverflow?: boolean; noRounding?: boolean }>()
 </script>
 
 <template>
@@ -8,10 +8,11 @@ defineProps<{ title: string; noOverflow?: boolean; noRounding?: boolean }>()
     grid="~"
     border="1 light-900 dark:dark-400"
     shadow="lg"
-    class="grid-rows-[min-content,auto]"
+    :style="{ gridTemplateRows: title ? 'min-content auto' : 'auto' }"
     :class="noRounding ? 'border-t-0' : 'rounded-md'"
   >
     <div
+      v-if="title"
       flex="~ row"
       text="xs"
       items="center"

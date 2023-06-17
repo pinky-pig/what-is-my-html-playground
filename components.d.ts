@@ -15,6 +15,8 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('./src/components/ui/Select.vue')['default']
     SelectItem: typeof import('./src/components/ui/SelectItem.vue')['default']
+    Tab: typeof import('./src/components/playground/Tab.vue')['default']
+    TabBar: typeof import('./src/components/playground/TabBar.vue')['default']
     Textfield: typeof import('./src/components/ui/Textfield.vue')['default']
     TheCounter: typeof import('./src/components/TheCounter.vue')['default']
     TheFooter: typeof import('./src/components/TheFooter.vue')['default']
