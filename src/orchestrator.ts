@@ -104,9 +104,6 @@ watchEffect(() => {
 watch(() => orchestrator.activeFilename, () => {
   shouldUpdateContent.trigger(null)
 })
-watch(() => orchestrator.files.html.content, (n, o) => {
-  console.log(orchestrator.files.html.content)
-})
 
 export function setActiveFile(name: string) {
   orchestrator.activeFilename = name
@@ -135,8 +132,6 @@ const initialPackages = [
 function loadInitialState() {
   if (location.hash.slice(1)) {
     const { files, packages } = JSON.parse(lz.decompressFromEncodedURIComponent(location.hash.slice(1)))
-
-    console.log(files, packages)
 
     if (files && packages) {
       orchestrator.packages = packages

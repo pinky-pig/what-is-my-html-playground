@@ -25,7 +25,7 @@ function onContentChanged(source: string, content: string) {
             <Container title="" class="rounded-b-md" no-overflow no-rounding>
               <template #default>
                 <Editor
-                  language="html"
+                  :language="orchestrator.activeFile?.filename || 'html'"
                   :value="initialHtml"
                   @change="content => onContentChanged('html', content)"
                 />
