@@ -60,4 +60,16 @@ export default defineConfig({
   test: {
     environment: 'jsdom',
   },
+
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          htmlWorker: ['./src/monaco/languages/html/html.worker'],
+          tsWorker: [`${'monaco-editor/esm/vs'}/language/typescript/ts.worker`],
+          editorWorker: [`${'monaco-editor/esm/vs'}/editor/editor.worker`],
+        },
+      },
+    },
+  },
 })

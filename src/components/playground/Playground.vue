@@ -2,7 +2,9 @@
 import { Pane, Splitpanes } from 'splitpanes'
 import { orchestrator } from '~/orchestrator'
 
-const initialHtml = ref('<div>Hello world</div>')
+const initialHtml = ref(`
+  <h1>Hello World</h1>
+`)
 
 function onContentChanged(source: string, content: string) {
   if (orchestrator.activeFile)
@@ -20,11 +22,10 @@ function onContentChanged(source: string, content: string) {
             <Container title="" class="rounded-b-md" no-overflow no-rounding>
               <template #default>
                 <Editor
-                  language="javascript"
+                  language="html"
                   :value="initialHtml"
                   @change="content => onContentChanged('script', content)"
                 />
-                <div class="h-full w-full bg-green-300" />
               </template>
             </Container>
           </Pane>
@@ -35,12 +36,12 @@ function onContentChanged(source: string, content: string) {
       <Splitpanes horizontal class="default-theme">
         <Pane>
           <Container title="Output">
-            <div class="h-full w-full bg-orange-300" />
+            <div class="h-full w-full " />
           </Container>
         </Pane>
         <Pane size="25">
           <Container title="Console">
-            <div class="h-full w-full bg-purple-300" />
+            <div class="h-full w-full " />
           </Container>
         </Pane>
       </Splitpanes>

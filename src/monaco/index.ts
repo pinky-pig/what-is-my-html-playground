@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { getCurrentInstance, onMounted, watch } from 'vue'
 import * as monaco from 'monaco-editor'
 import { createSingletonPromise } from '@antfu/utils'
@@ -51,21 +50,26 @@ const setup = createSingletonPromise(async () => {
     (async () => {
       const [
         { default: EditorWorker },
-        // { default: HtmlWorker },
         { default: TsWorker },
+        { default: HtmlWorker },
+        { default: CSSWorker },
       ] = await Promise.all([
         import('monaco-editor/esm/vs/editor/editor.worker?worker'),
-        // import('./languages/html/html.worker?worker'),
         import('monaco-editor/esm/vs/language/typescript/ts.worker?worker'),
+        import('monaco-editor/esm/vs/language/html/html.worker?worker'),
+        import('monaco-editor/esm/vs/language/css/css.worker?worker'),
       ])
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       window.MonacoEnvironment = {
         getWorker(_: any, label: string) {
-          // if (label === 'html' || label === 'handlebars' || label === 'razor')
-          //   return new HtmlWorker()
+          if (label === 'html' || label === 'handlebars' || label === 'razor')
+            return new HtmlWorker()
           if (label === 'typescript' || label === 'javascript')
             return new TsWorker()
+          if (label === 'css' || label === 'CSS')
+            return new CSSWorker()
           return new EditorWorker()
         },
       }

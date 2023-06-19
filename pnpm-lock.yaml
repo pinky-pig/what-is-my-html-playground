@@ -16,8 +16,8 @@ specifiers:
   eslint: ^8.42.0
   jsdom: ^22.1.0
   lint-staged: ^13.2.2
-  monaco-editor: 0.24.0
-  monaco-editor-core: ^0.24.0
+  monaco-editor: ^0.39.0
+  monaco-editor-core: ^0.39.0
   pnpm: ^8.6.0
   simple-git-hooks: ^2.8.1
   splitpanes: ^3.0.4
@@ -41,8 +41,8 @@ dependencies:
   '@antfu/utils': 0.1.7
   '@headlessui/vue': 1.7.14_vue@3.3.4
   '@vueuse/core': 10.2.0_vue@3.3.4
-  monaco-editor: 0.24.0
-  monaco-editor-core: 0.24.0
+  monaco-editor: 0.39.0
+  monaco-editor-core: 0.39.0
   splitpanes: 3.1.5
   theme-vitesse: 0.1.14
   vscode-html-languageservice: 4.2.5
@@ -5879,12 +5879,12 @@ packages:
       ufo: 1.1.2
     dev: true
 
-  /monaco-editor-core/0.24.0:
-    resolution: {integrity: sha512-WJAzpNYEaJp8Z7crIAiLCVln1zZdo4cFXCRuhTDN4A3tz6IK2NOXAtTOZ9iLKBTtd6eitZJ2Q1Fx8JN8rN3fWw==}
+  /monaco-editor-core/0.39.0:
+    resolution: {integrity: sha512-40OuC5krS/kmXMXj0tJgRnxS5ia+3uSdP6jgiNHitns7kQHN/jFkRIW6MCS8JrxlmSNHBLnQjDa+0ZPIRGnLrA==}
     dev: false
 
-  /monaco-editor/0.24.0:
-    resolution: {integrity: sha512-o1f0Lz6ABFNTtnEqqqvlY9qzNx24rQZx1RgYNQ8SkWkE+Ka63keHH/RqxQ4QhN4fs/UYOnvAtEUZsPrzccH++A==}
+  /monaco-editor/0.39.0:
+    resolution: {integrity: sha512-zhbZ2Nx93tLR8aJmL2zI1mhJpsl87HMebNBM6R8z4pLfs8pj604pIVIVwyF1TivcfNtIPpMXL+nb3DsBmE/x6Q==}
     dev: false
 
   /mrmime/1.0.1:

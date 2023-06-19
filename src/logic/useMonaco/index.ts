@@ -2,6 +2,8 @@ import type { Ref } from 'vue'
 import { ref, unref, watch } from 'vue'
 import { createEventHook, tryOnUnmounted, until } from '@vueuse/core'
 
+import darktheme from 'theme-vitesse/themes/vitesse-dark.json'
+import lightTheme from 'theme-vitesse/themes/vitesse-light.json'
 import type { editor as Editor } from 'monaco-editor'
 import setupMonaco from '~/monaco'
 
@@ -20,6 +22,8 @@ export function useMonaco(target: Ref, options: any) {
 
   const init = async () => {
     const { monaco } = await setupMonaco()
+    monaco.editor.defineTheme('vitesse-dark', darktheme as any)
+    monaco.editor.defineTheme('vitesse-light', lightTheme as any)
 
     watch(target, () => {
       const el = unref(target)

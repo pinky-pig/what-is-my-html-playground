@@ -1,13 +1,19 @@
 html,
 body,
 #app {
-  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
-
+html{
+  color: rgba(60, 60, 60, 1)
+}
 html.dark {
+  color: rgba(221, 225, 227, 1);
   background: #121212;
+}
+.dark .mtk1 {
+  color: white !important;
 }
 
 .splitpanes.default-theme .splitpanes__pane {
