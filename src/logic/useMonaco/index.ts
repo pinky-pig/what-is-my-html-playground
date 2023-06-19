@@ -63,6 +63,10 @@ export function useMonaco(target: Ref, options: any) {
         else
           monaco.editor.setTheme('vitesse-light')
       }, { immediate: true })
+
+      editor.getModel()?.onDidChangeContent(() => {
+        changeEventHook.trigger(editor.getValue())
+      })
     }, {
       flush: 'post',
       immediate: true,

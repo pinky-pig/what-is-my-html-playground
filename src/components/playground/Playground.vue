@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { Pane, Splitpanes } from 'splitpanes'
-import { orchestrator } from '~/orchestrator'
+import { onShouldUpdateContent, orchestrator } from '~/orchestrator'
 
-const initialHtml = ref(`
-  <h1>Hello World</h1>
-`)
+const initialHtml = ref(orchestrator.activeFile?.content || '')
 
+// 监听触发更新
+onShouldUpdateContent(() => {
+  if (orchestrator.activeFile)
+    initialHtml.value = orchestrator.activeFile?.content
+})
 function onContentChanged(source: string, content: string) {
   if (orchestrator.activeFile)
     orchestrator.activeFile.content = content
@@ -24,7 +27,7 @@ function onContentChanged(source: string, content: string) {
                 <Editor
                   language="html"
                   :value="initialHtml"
-                  @change="content => onContentChanged('script', content)"
+                  @change="content => onContentChanged('html', content)"
                 />
               </template>
             </Container>

@@ -15,6 +15,7 @@
     "@antfu/utils": "^0.1.6",
     "@headlessui/vue": "^1.2.0",
     "@vueuse/core": "^10.1.2",
+    "lz-string": "^1.5.0",
     "monaco-editor": "^0.39.0",
     "monaco-editor-core": "^0.39.0",
     "splitpanes": "^3.0.4",

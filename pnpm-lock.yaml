@@ -16,6 +16,7 @@ specifiers:
   eslint: ^8.42.0
   jsdom: ^22.1.0
   lint-staged: ^13.2.2
+  lz-string: ^1.5.0
   monaco-editor: ^0.39.0
   monaco-editor-core: ^0.39.0
   pnpm: ^8.6.0
@@ -41,6 +42,7 @@ dependencies:
   '@antfu/utils': 0.1.7
   '@headlessui/vue': 1.7.14_vue@3.3.4
   '@vueuse/core': 10.2.0_vue@3.3.4
+  lz-string: 1.5.0
   monaco-editor: 0.39.0
   monaco-editor-core: 0.39.0
   splitpanes: 3.1.5
@@ -5646,6 +5648,11 @@ packages:
     resolution: {integrity: sha512-ERJq3FOzJTxBbFjZ7iDs+NiK4VI9Wz+RdrrAB8dio1oV+YvdPzUEE4QNiT2VD51DkIbCYRUUzCRkssXCHqSnKQ==}
     engines: {node: 14 || >=16.14}
     dev: true
+
+  /lz-string/1.5.0:
+    resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
+    hasBin: true
+    dev: false
 
   /magic-string-ast/0.1.2:
     resolution: {integrity: sha512-P53AZrzq7hclCU6HWj88xNZHmP15DKjMmK/vBytO1qnpYP3ul4IEZlyCE0aU3JRnmgWmZPmoTKj4Bls7v0pMyA==}
