@@ -35,6 +35,7 @@ specifiers:
   vitest: ^0.31.4
   vscode-html-languageservice: ^4.0.3
   vue: ^3.3.4
+  vue-hako: ^0.0.1
   vue-router: ^4.2.2
   vue-tsc: ^1.6.5
 
@@ -49,6 +50,7 @@ dependencies:
   theme-vitesse: 0.1.14
   vscode-html-languageservice: 4.2.5
   vue: 3.3.4
+  vue-hako: 0.0.1
   vue-router: 4.2.2_vue@3.3.4
 
 devDependencies:
@@ -3049,6 +3051,16 @@ packages:
       - '@vue/composition-api'
       - vue
 
+  /@vueuse/core/5.3.0_vue@3.3.4:
+    resolution: {integrity: sha512-bBL1/JMRHFWmbgQzUZHF4WOwlqfenR1B8+elriXsbnHlogQM5foSz9++WyDBR0YPIVgCJq7fvNLqd4T7+cjc5w==}
+    dependencies:
+      '@vueuse/shared': 5.3.0_vue@3.3.4
+      vue-demi: 0.14.5_vue@3.3.4
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
   /@vueuse/metadata/10.2.0:
     resolution: {integrity: sha512-IR7Mkq6QSgZ38q/2ZzOt+Zz1OpcEsnwE64WBumDQ+RGKrosFCtUA2zgRrOqDEzPBXrVB+4HhFkwDjQMu0fDBKw==}
 
@@ -3059,6 +3071,15 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
+
+  /@vueuse/shared/5.3.0_vue@3.3.4:
+    resolution: {integrity: sha512-qZfkPFH0qTScFpYiPOFpTcxWriRhlM3bgSzl3DFTgr/U0eZg3w2EFWaRZHdWeSvAUdNQyjOC4Toa8S0zJyEjHw==}
+    dependencies:
+      vue-demi: 0.14.5_vue@3.3.4
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /abab/2.0.6:
     resolution: {integrity: sha512-j2afSsaIENvHZN2B8GOpF566vZ5WVk5opAiMTvWgaQT8DkbOqsTfvNAvHoRGU2zzP8cPoqys+xHTRDWW8L+/BA==}
@@ -7877,6 +7898,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-hako/0.0.1:
+    resolution: {integrity: sha512-CMNsXzNI55iUD02QS1y0hOiLz0mb52iK08sZCE/7IgHZcGpt0f1eIg7AdNMnYfVCBiw804dzwSs044eiRJGCWQ==}
+    dependencies:
+      '@vueuse/core': 5.3.0_vue@3.3.4
+      vue: 3.3.4
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
 
   /vue-router/4.2.2_vue@3.3.4:
     resolution: {integrity: sha512-cChBPPmAflgBGmy3tBsjeoe3f3VOSG6naKyY5pjtrqLGbNEXdzCigFUHgBvp9e3ysAtFtEx7OLqcSDh/1Cq2TQ==}

@@ -12,6 +12,7 @@ declare module 'vue' {
     Editor: typeof import('./src/components/playground/Editor.vue')['default']
     Navigation: typeof import('./src/components/ui/Navigation.vue')['default']
     Playground: typeof import('./src/components/playground/Playground.vue')['default']
+    Preview: typeof import('./src/components/playground/Preview.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Select: typeof import('./src/components/ui/Select.vue')['default']

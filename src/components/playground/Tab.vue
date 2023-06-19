@@ -22,6 +22,7 @@ const isActive = computed(() => orchestrator.activeFilename === props.name)
     flex="row"
     place="items-center"
     space="x-2"
+    select="none"
     border="r-1 light-900 dark:dark-400"
     @click="setActiveFile(name)"
   >

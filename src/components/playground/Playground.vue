@@ -39,7 +39,9 @@ function onContentChanged(source: string, content: string) {
       <Splitpanes horizontal class="default-theme">
         <Pane>
           <Container title="Output">
-            <div class="h-full w-full " />
+            <div h="full" class="p-8 bg-light-700 dark:bg-dark-300">
+              <Preview shadow="lg" bg="dark:dark-700 light-100" />
+            </div>
           </Container>
         </Pane>
         <Pane size="25">
