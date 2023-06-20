@@ -169,7 +169,6 @@ async function updatePreview() {
       ...modules,
       isDark.value ? 'document.querySelector("html").classList.add("dark")' : 'document.querySelector("html").classList.remove("dark")',
       `
-      console.log(window.__html__);
         document.getElementById('__sfc-styles').innerHTML = window.__css__
         document.getElementById('__sfc-script').innerHTML = window.__javascript__
         document.getElementById('app').innerHTML = window.__html__

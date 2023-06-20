@@ -15,7 +15,7 @@ useEventListener('keydown', (e) => {
 </script>
 
 <template>
-  <div class="h-8 flex flex-row items-center overflow-hidden border-1 border-b border-light-900 rounded-t-md bg-light-500 pr-2 dark:border-dark-400 dark:bg-dark-800">
+  <div class="flex-shrink-0 bg-light-500 h-8 overflow-hidden border-light-900 dark:border-dark-400 border-1 dark:bg-dark-800 rounded-t-md border-b flex flex-row items-center pr-2">
     <Tab
       v-for="file in orchestrator.files"
       :key="file.filename"
