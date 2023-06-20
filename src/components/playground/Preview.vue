@@ -4,7 +4,7 @@ import type { WatchStopHandle } from 'vue'
 // import { useElementSize, useCssVar } from '@vueuse/core'
 import srcdoc from '../template.html?raw'
 import { PreviewProxy } from '~/logic/PreviewProxy'
-import { MAIN_FILE, vueRuntimeUrl } from '~/compiler/sfcCompiler'
+import { vueRuntimeUrl } from '~/compiler/sfcCompiler'
 import { compileModulesForPreview } from '~/compiler/moduleCompiler'
 import { orchestrator, orchestrator as store } from '~/orchestrator'
 
@@ -19,10 +19,9 @@ watch([runtimeError, runtimeWarning], () => {
   orchestrator.runtimeErrors = [runtimeError.value, runtimeWarning.value].filter(x => x)
 })
 
-// create sandbox on mount
+// 创建沙盒
 onMounted(createSandbox)
-// reset sandbox when import map changes
-
+// 当引入的依赖有变化的时候，重置沙盒
 watch(() => store.importMap, (importMap, prev) => {
   if (!importMap) {
     if (prev) {
@@ -51,20 +50,26 @@ watch(() => store.importMap, (importMap, prev) => {
     store.errors = [e as string]
   }
 })
-// reset sandbox when version changes
+// 当版本有变化的时候，重置沙盒
 watch(vueRuntimeUrl, createSandbox)
+// 离开页面的时候，销毁沙盒
 onUnmounted(() => {
   proxy.destroy()
   stopUpdateWatcher && stopUpdateWatcher()
 })
+
+// ##创建沙盒##
 function createSandbox() {
+  // 1. 创建之前先将原来的销毁
   if (sandbox) {
     proxy.destroy()
     if (stopUpdateWatcher)
       stopUpdateWatcher()
     container.value.removeChild(sandbox)
   }
+  // 2. 开始创建
   sandbox = document.createElement('iframe')
+  // 3. 设置sandbox属性
   sandbox.setAttribute('sandbox', [
     'allow-forms',
     'allow-modals',
@@ -74,6 +79,8 @@ function createSandbox() {
     'allow-scripts',
     'allow-top-navigation-by-user-activation',
   ].join(' '))
+
+  // 4. 设置引入的依赖库
   let importMap: Record<string, any>
   try {
     importMap = JSON.parse(store.importMap || '{}')
@@ -86,9 +93,13 @@ function createSandbox() {
     importMap.imports = {}
 
   importMap.imports.vue = vueRuntimeUrl.value
+  // 5. 将依赖库替换到模板中，然后将模板设置给 iframe
   const sandboxSrc = srcdoc.replace(/<!--IMPORT_MAP-->/, JSON.stringify(importMap))
   sandbox.srcdoc = sandboxSrc
+  // 6. 将 iframe 添加到页面中
   container.value.appendChild(sandbox)
+
+  // 7. 创建代理，使用代理来操作 iframe ，详情见 PreviewProxy 文件
   proxy = new PreviewProxy(sandbox, {
     on_fetch_progress: (progress: any) => {
       // pending_imports = progress;
@@ -139,34 +150,30 @@ function createSandbox() {
       // group_logs(action.label, true);
     },
   })
+
+  // 8. 监听 iframe 的 load 事件，然后页面执行监听，用于修改代码后，页面自动更新
   sandbox.addEventListener('load', () => {
     proxy.handle_links()
     stopUpdateWatcher = watchEffect(updatePreview)
   })
 }
+// ##更新沙盒##
 async function updatePreview() {
   // console.clear()
   runtimeError.value = null
   runtimeWarning.value = null
   try {
     const modules = compileModulesForPreview()
-
-    console.log(`successfully compiled ${modules.length} modules.`)
-    // reset modules
     await proxy.eval([
-      'window.__modules__ = {};window.__css__ = \'\'',
+      'window.__modules__ = {};window.__css__ = \'\';window.__html__ = \'\'',
       ...modules,
       isDark.value ? 'document.querySelector("html").classList.add("dark")' : 'document.querySelector("html").classList.remove("dark")',
       `
-      import { createApp as _createApp } from "vue"
-      if (window.__app__) {
-        window.__app__.unmount()
-        document.getElementById('app').innerHTML = ''
-      }
-      document.getElementById('__sfc-styles').innerHTML = window.__css__
-      const app = window.__app__ = _createApp(__modules__["${MAIN_FILE}"].default)
-      app.config.errorHandler = e => console.error(e)
-      app.mount('#app')`.trim(),
+      console.log(window.__html__);
+        document.getElementById('__sfc-styles').innerHTML = window.__css__
+        document.getElementById('__sfc-script').innerHTML = window.__javascript__
+        document.getElementById('app').innerHTML = window.__html__
+      `.trim(),
     ])
   }
   catch (e) {

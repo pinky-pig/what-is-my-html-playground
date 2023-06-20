@@ -68,7 +68,7 @@ export const orchestrator: Orchestrator = reactive({
     <h1>Hello World</h1>
     <h1>Hello World</h1>
     `),
-    css: new OrchestratorFile('css', 'body{ background: #fefefe}'),
+    css: new OrchestratorFile('css', 'h1{ color: orange}'),
     javascript: new OrchestratorFile('javascript', 'const info = "Hello World"'),
   },
   packages: [],

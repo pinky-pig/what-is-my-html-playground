@@ -2,7 +2,7 @@ import * as defaultCompiler from '@vue/compiler-sfc'
 import { ref } from 'vue'
 import type { OrchestratorFile as File } from '../orchestrator'
 
-export const MAIN_FILE = 'App.vue'
+export const MAIN_FILE = 'html'
 export const COMP_IDENTIFIER = '__sfc__'
 
 /**
