@@ -46,7 +46,7 @@ function onContentChanged(source: string, content: string) {
         </Pane>
         <Pane size="25">
           <Container title="Console">
-            <div class="h-full w-full " />
+            <Console />
           </Container>
         </Pane>
       </Splitpanes>
