@@ -1,6 +1,6 @@
 // ReplProxy and srcdoc implementation from Svelte REPL
 // MIT License https://github.com/sveltejs/svelte-repl/blob/master/LICENSE
-
+// https://github1s.com/sveltejs/svelte-repl/blob/master/src/Output/Viewer.svelte#L166-L177
 let uid = 1
 
 export class PreviewProxy {
