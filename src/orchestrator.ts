@@ -38,6 +38,7 @@ export interface Orchestrator {
   activeFilename: string
   errors: (string | Error)[]
   runtimeErrors: (string | Error)[]
+  runtimeLogs: string[]
 
   readonly activeFile: OrchestratorFile | undefined
   readonly importMap: string
@@ -75,6 +76,7 @@ export const orchestrator: Orchestrator = reactive({
   activeFilename: 'html',
   errors: [],
   runtimeErrors: [],
+  runtimeLogs: [],
 
   get activeFile() {
     return orchestrator.files[this.activeFilename]

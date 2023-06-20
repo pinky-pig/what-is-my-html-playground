@@ -15,10 +15,10 @@ function symbolFn(params: string | number) {
       type="error"
     />
     <Message
-      v-for="message, index in orchestrator.errors"
+      v-for="message, index in orchestrator.runtimeLogs"
       :key="symbolFn(index)"
       :message="message.toString()"
-      type="error"
+      type="log"
     />
   </div>
 </template>

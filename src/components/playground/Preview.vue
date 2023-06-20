@@ -11,12 +11,23 @@ import { orchestrator, orchestrator as store } from '~/orchestrator'
 const container = ref()
 const runtimeError = ref()
 const runtimeWarning = ref()
+const runtimeLog = ref<string[]>([])
+
+let last_log = ''
 let sandbox: HTMLIFrameElement
 let proxy: PreviewProxy
 let stopUpdateWatcher: WatchStopHandle
 
 watch([runtimeError, runtimeWarning], () => {
   orchestrator.runtimeErrors = [runtimeError.value, runtimeWarning.value].filter(x => x)
+})
+
+watch(runtimeLog, (n, o) => {
+  if (n === null)
+    return
+  orchestrator.runtimeLogs = runtimeLog.value
+}, {
+  deep: true,
 })
 
 // 创建沙盒
@@ -139,6 +150,13 @@ function createSandbox() {
             .trim()
         }
       }
+      else if (log.level === 'log') {
+        // 如果 log 为 null ，从头打印 log
+        if (log.duplicate)
+          increment_duplicate_log()
+        else
+          push_logs(log.args.join(''))
+      }
     },
     on_console_group: (action: any) => {
       // group_logs(action.label, false);
@@ -156,12 +174,24 @@ function createSandbox() {
     proxy.handle_links()
     stopUpdateWatcher = watchEffect(updatePreview)
   })
+
+  // 添加 log
+  function push_logs(log: string) {
+    last_log = log
+    runtimeLog.value.push(log)
+  }
+  // 复制的时候 log
+  function increment_duplicate_log() {
+    push_logs(last_log)
+  }
 }
 // ##更新沙盒##
 async function updatePreview() {
   // console.clear()
   runtimeError.value = null
   runtimeWarning.value = null
+  runtimeLog.value.splice(0)
+
   try {
     const modules = compileModulesForPreview()
     await proxy.eval([
