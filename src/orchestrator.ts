@@ -49,28 +49,17 @@ export interface Orchestrator {
  */
 export const orchestrator: Orchestrator = reactive({
   files: {
-    html: new OrchestratorFile('html', `
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    <h1>Hello World</h1>
-    `),
-    css: new OrchestratorFile('css', 'h1{ color: orange}'),
-    javascript: new OrchestratorFile('javascript', 'const info = "Hello World"'),
+    html: new OrchestratorFile('html', '<h1>Hello World</h1>'),
+    css: new OrchestratorFile('css', `
+html {
+  color: #001870;
+}
+
+html.dark {
+  color: rgba(221, 225, 227, 1);
+}
+`),
+    javascript: new OrchestratorFile('javascript', 'console.log("Hello World")'),
   },
   packages: [],
   activeFilename: 'html',
