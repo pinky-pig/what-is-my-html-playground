@@ -16,6 +16,7 @@ function processFile(files: { [key: string]: File }) {
 
   const s = new MagicString(js)
 
+  // TODO 将 html 中的 script 的运行脚本 js 和 上面的 js 拼接起来返回，然后在运行一遍
   if (html) {
     const scriptRegex = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi
     const scriptTags = html.match(scriptRegex)
