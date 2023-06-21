@@ -16,8 +16,16 @@ function processFile(files: { [key: string]: File }) {
 
   const s = new MagicString(js)
 
-  if (html)
-    s.append(`\nwindow.__html__ += ${JSON.stringify(html)}`)
+  if (html) {
+    const scriptRegex = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi
+    const scriptTags = html.match(scriptRegex)
+    const otherContent = html.replace(scriptRegex, '')
+    if (otherContent)
+      s.append(`\nwindow.__html__ += ${JSON.stringify(otherContent)}`)
+    if (scriptTags)
+      s.append(`\nwindow.__html_script__ = ${JSON.stringify(scriptTags)}`)
+  }
+
   if (css)
     s.append(`\nwindow.__css__ += ${JSON.stringify(css)}`)
 
