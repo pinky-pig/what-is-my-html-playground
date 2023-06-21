@@ -33,7 +33,7 @@ function handleRunOnce() {
 
     <div
       v-if="!isImmediateRun"
-      class="text-green-900 hover:text-green-500"
+      class="text-green-900 hover:text-green-500 hover:scale-120 transition-all ease-in-out duration-200 "
       cursor="pointer"
       i-carbon:caret-right
       @click="handleRunOnce"
