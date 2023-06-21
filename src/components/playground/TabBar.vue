@@ -20,7 +20,7 @@ function handleRunOnce() {
 
 <template>
   <div class=" flex-shrink-0 bg-light-500 h-8 overflow-hidden border-light-900 dark:border-dark-400 border-1 dark:bg-dark-800 rounded-t-md border-b flex flex-row items-center justify-between pr-2">
-    <div>
+    <div class="flex-shrink-0">
       <Tab
         v-for="file in orchestrator.files"
         :key="file.filename"
