@@ -45,6 +45,10 @@ function toggleDark(event: MouseEvent) {
       )
     })
 }
+
+function switchIsImmediateRun() {
+  isImmediateRun.value = !isImmediateRun.value
+}
 </script>
 
 <template>
@@ -58,6 +62,20 @@ function toggleDark(event: MouseEvent) {
   >
     <img src="/arvin.svg" class="w-12">
     <span class="flex-1" />
+
+    <Button
+      icon
+      text="base"
+      @click="switchIsImmediateRun"
+    >
+      <div v-if="isImmediateRun">
+        🚀
+      </div>
+      <div v-else>
+        🧻
+      </div>
+    </Button>
+
     <Button
       icon
       text="base"
@@ -66,12 +84,6 @@ function toggleDark(event: MouseEvent) {
       <div i-carbon-sun dark:i-carbon-moon />
     </Button>
     <!-- <Button
-      icon
-      text="base"
-    >
-      <div i-carbon-share />
-    </Button>
-    <Button
       icon
       text="base"
       @click="isOpen = true"
