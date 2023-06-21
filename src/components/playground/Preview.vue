@@ -218,6 +218,21 @@ async function updatePreview() {
     runtimeError.value = (e as any).message
   }
 }
+
+watch(isImmediateRun, (v) => {
+  if (v) {
+    // 说明需要立即执行响应
+    stopUpdateWatcher = watchEffect(updatePreview)
+  }
+  else {
+    // 说明不需要立即执行响应
+    stopUpdateWatcher && stopUpdateWatcher()
+  }
+})
+watch(isRunOnce, (v) => {
+  // 说明需要立即执行一次响应
+  updatePreview()
+})
 </script>
 
 <template>
