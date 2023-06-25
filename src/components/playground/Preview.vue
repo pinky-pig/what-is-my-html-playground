@@ -198,20 +198,6 @@ async function updatePreview() {
       'window.__modules__ = {};window.__css__ = \'\';window.__html__ = \'\'',
       ...modules,
       isDark.value ? 'document.querySelector("html").classList.add("dark")' : 'document.querySelector("html").classList.remove("dark")',
-      `
-        document.getElementById('__sfc-styles').innerHTML = window.__css__
-        document.getElementById('app').innerHTML = window.__html__
-
-        // 处理 html 中的 script 标签
-        const appElement = document.getElementById("__sfc-scripts");
-        appElement.textContent = "";
-        const newRange = document.createRange();
-        newRange.selectNode(appElement);
-        if (window.__html_script__) {
-          const newFragment = newRange.createContextualFragment(window.__html_script__.join(''));
-          appElement.appendChild(newFragment);
-        }
-      `.trim(),
     ])
   }
   catch (e) {
