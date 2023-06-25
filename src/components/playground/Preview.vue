@@ -118,14 +118,14 @@ function createSandbox() {
     on_error: (event: any) => {
       const msg = event.value instanceof Error ? event.value.message : event.value
       if (
-        msg.includes('Failed to resolve module specifier')
-        || msg.includes('Error resolving module specifier')
+        msg?.includes('Failed to resolve module specifier')
+        || msg?.includes('Error resolving module specifier')
       ) {
         runtimeError.value = `${msg.replace(/\. Relative references must.*$/, '')
         }.\nTip: add an "import-map.json" file to specify import paths for dependencies.`
       }
       else {
-        runtimeError.value = event.value
+        runtimeError.value = event.value || 'Unknown error. Please check your browser console.'
       }
     },
     on_unhandled_rejection: (event: any) => {
