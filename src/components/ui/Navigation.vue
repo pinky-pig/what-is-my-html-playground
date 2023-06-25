@@ -72,7 +72,7 @@ function switchIsImmediateRun() {
         🚀
       </div>
       <div v-else>
-        🧻
+        🐌
       </div>
     </Button>
 
