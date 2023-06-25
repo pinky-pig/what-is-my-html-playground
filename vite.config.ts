@@ -60,7 +60,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Arvin',
+        name: 'HTML Playground',
         short_name: 'Playground',
         theme_color: '#ffffff',
         icons: [
