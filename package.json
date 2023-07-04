@@ -18,6 +18,7 @@
     "lz-string": "^1.5.0",
     "monaco-editor": "^0.39.0",
     "monaco-editor-core": "^0.39.0",
+    "register-service-worker": "^1.7.2",
     "splitpanes": "^3.0.4",
     "theme-vitesse": "^0.1.11",
     "vscode-html-languageservice": "^4.0.3",

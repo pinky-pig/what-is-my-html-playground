@@ -19,11 +19,11 @@ export default defineConfig({
       warn: true,
     }),
     presetWebFonts({
-      fonts: {
-        sans: 'DM Sans',
-        serif: 'DM Serif Display',
-        mono: 'DM Mono',
-      },
+      // fonts: {
+      //   sans: 'DM Sans',
+      //   serif: 'DM Serif Display',
+      //   mono: 'DM Mono',
+      // },
     }),
   ],
 })
