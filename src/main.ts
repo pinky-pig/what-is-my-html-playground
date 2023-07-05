@@ -7,7 +7,6 @@ import 'splitpanes/dist/splitpanes.css'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
 import 'uno.css'
-import './registerServiceWorker'
 
 const app = createApp(App)
 const router = createRouter({

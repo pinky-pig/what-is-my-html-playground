@@ -58,6 +58,21 @@ export default defineConfig({
 
     // https://github.com/antfu/vite-plugin-pwa
     VitePWA({
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
+      workbox: {
+        globPatterns: ['**/*'],
+        globIgnores: [
+          '**/node_modules/**/*',
+          'sw.js',
+          'workbox-*.js',
+        ],
+        maximumFileSizeToCacheInBytes: 5000000,
+      },
+      includeAssets: ['**/*'],
+
       registerType: 'autoUpdate',
       manifest: {
         name: 'HTML Playground',
